@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Poonam Patil | Technical Professional</title>
+<title>Poonam Patil | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 
 body {
@@ -10,11 +13,7 @@ body {
   margin: 0;
   background: #f5f7fa;
   color: #333;
-}
-
-.container {
-  width: 85%;
-  margin: auto;
+  transition: 0.3s;
 }
 
 header {
@@ -26,13 +25,31 @@ header {
 
 section {
   background: white;
-  margin: 20px 0;
+  margin: 20px;
   padding: 25px;
-  border-radius: 8px;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
-h1, h2 {
-  color: #1e293b;
+button {
+  padding:10px 20px;
+  border:none;
+  border-radius:30px;
+  background:#f97316;
+  color:white;
+  cursor:pointer;
+}
+
+.dark-mode {
+  background:#111;
+  color:white;
+}
+.dark-mode section {
+  background:#1e293b;
+  color:white;
+}
+.dark-mode header {
+  background:#000;
 }
 
 .card {
@@ -41,19 +58,6 @@ h1, h2 {
   border-radius:10px;
   min-width:200px;
   text-align:center;
-}
-
-.footer {
-  text-align: center;
-  padding: 20px;
-}
-
-button {
-  padding:10px 20px;
-  background:#1e293b;
-  color:white;
-  border:none;
-  border-radius:5px;
 }
 
 </style>
@@ -67,14 +71,13 @@ button {
 <p>4 Years Experience | Mumbai, India</p>
 </header>
 
-<div class="container">
+<div style="text-align:right; padding:10px 20px;">
+<button onclick="toggleMode()">🌙 / ☀️</button>
+</div>
 
 <section>
 <h2>Summary</h2>
-<p>
-Experienced professional with over 4 years of expertise managing structured workflows and delivering high-quality outputs.
-Skilled in automation using Python, API integrations, and improving operational efficiency through machine-assisted processes and testing.
-</p>
+<p>Experienced professional with 4 years of expertise managing workflows and improving efficiency using Python, APIs and automation.</p>
 </section>
 
 <section>
@@ -88,53 +91,58 @@ Skilled in automation using Python, API integrations, and improving operational 
 </section>
 
 <section>
+<h2>Software & Tools</h2>
+<div style="display:flex; flex-wrap:wrap; text-align:center;">
+<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-tags fa-2x"></i>
+<p>Automation Tools</p>
+</div>
+<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-print fa-2x"></i>
+<p>Data Processing</p>
+</div>
+<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-filter fa-2x"></i>
+<p>API Integration</p>
+</div>
+<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-code fa-2x"></i>
+<p>Python Coding</p>
+</div>
+<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-folder fa-2x"></i>
+<p>File Handling</p>
+</div>
+<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-pen-to-square fa-2x"></i>
+<p>Text Processing</p>
+</div>
+</div>
+</section>
+
+<section>
 <h2>Experience</h2>
-<h3>Andovar – Localization Engineer</h3>
-<p>Jan 2022 – Dec 2025 | Mumbai</p>
+<h3>Andovar</h3>
+<p>Localization Engineer (2022–2025)</p>
 <ul>
-<li>Managed workflows for exporting and reintegrating content via APIs</li>
-<li>Automated repetitive tasks using Python scripts</li>
-<li>Performed internationalization testing</li>
-<li>Integrated machine translation engines</li>
-<li>Resolved workflow technical issues</li>
-<li>Conducted software testing and bug fixes</li>
+<li>API workflows</li>
+<li>Python automation</li>
+<li>Testing & QA</li>
 <li>Mentored interns</li>
 </ul>
 </section>
 
 <section>
 <h2>Education</h2>
-<p>Bachelor of Science in Computer Science</p>
+<p>BSc Computer Science</p>
 <p>Mumbai University</p>
 <p>CGPA: 9.19</p>
-<p>2018 – 2021</p>
-</section>
-
-<section>
-<h2>Skills</h2>
-<p>
-Python, SQL, HTML, CSS, Git, REST APIs, Postman, AWS, Docker, Power BI,
-Regex, R Studio, Automation Tools
-</p>
-</section>
-
-<section>
-<h2>Certifications</h2>
-<ul>
-<li>AI for Everyone – Coursera</li>
-<li>Power BI Data Analyst – Coursera</li>
-<li>Machine Learning A-Z – Udemy</li>
-<li>API Testing – Udemy</li>
-<li>Code Free Data Science – Coursera</li>
-</ul>
 </section>
 
 <section>
 <h2>Project</h2>
 <h3>Virtual Desktop Assistant</h3>
-<p>
-Python-based assistant that performs tasks through voice commands including reading, music playback and daily assistance.
-</p>
+<p>Voice-based assistant built using Python.</p>
 </section>
 
 <section>
@@ -146,15 +154,16 @@ Python-based assistant that performs tasks through voice commands including read
 
 <section>
 <h2>Contact</h2>
-<p>Email: your-email@gmail.com</p>
-<p>LinkedIn: https://linkedin.com/in/poonam-patil-16000700pdp</p>
+<p><i class="fa-solid fa-location-dot"></i> Mumbai, India</p>
+<p><i class="fa-solid fa-envelope"></i> your-email@gmail.com</p>
+<p><i class="fa-brands fa-linkedin"></i> linkedin.com/in/poonam-patil-16000700pdp</p>
 </section>
 
-</div>
-
-<div class="footer">
-<p>© 2026 Poonam Patil</p>
-</div>
+<script>
+function toggleMode() {
+document.body.classList.toggle("dark-mode");
+}
+</script>
 
 </body>
 </html>
