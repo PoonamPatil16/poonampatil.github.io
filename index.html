@@ -4,89 +4,50 @@
 <title>Poonam Patil | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 
 body {
-font-family: Arial, sans-serif;
+font-family: Arial;
 margin:0;
 background:#f8fafc;
 color:#1e293b;
-transition:0.3s;
 }
 
 /* HERO */
 .hero {
 text-align:center;
-padding:80px 20px;
-background:linear-gradient(135deg,#1e293b,#334155);
+padding:60px 20px;
+background:#1e293b;
 color:white;
 }
 
-.hero-sub {
-margin:20px 0;
-font-size:18px;
-opacity:0.9;
-}
-
-.hero-buttons a {
-margin:10px;
-padding:10px 20px;
-background:#f97316;
-color:white;
-border-radius:20px;
-text-decoration:none;
-}
-
-.hero-buttons a:hover {
-background:#fb923c;
-}
-
-/* CARD GRID */
-.card-grid {
+/* COUNTERS */
+.counter-box {
 display:flex;
-flex-wrap:wrap;
-gap:20px;
 justify-content:center;
+gap:40px;
+margin:40px 0;
 }
 
+.counter {
+font-size:40px;
+color:#f97316;
+}
+
+/* CARD */
 .card {
 background:white;
 padding:20px;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
-flex:1;
-min-width:250px;
-transition:0.3s;
-position:relative;
-overflow:hidden;
 }
 
-.card:hover {
-transform: translateY(-5px);
-}
-
-/* PROJECT HOVER */
-.project-overlay {
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-color:white;
+/* GRID */
+.card-grid {
 display:flex;
-align-items:center;
+flex-wrap:wrap;
+gap:20px;
 justify-content:center;
-opacity:0;
-transition:0.3s;
-text-align:center;
-padding:20px;
-}
-
-.card:hover .project-overlay {
-opacity:1;
 }
 
 /* TIMELINE */
@@ -97,89 +58,107 @@ max-width:600px;
 }
 
 .timeline::before {
-content: '';
-position: absolute;
-left: 50%;
-top: 0;
-width: 3px;
-height: 100%;
-background: #f97316;
-}
-
-.timeline-item {
-position: relative;
-margin-bottom: 40px;
-}
-
-.timeline-dot {
-position: absolute;
-left: calc(50% - 7px);
-top: 5px;
-width: 15px;
-height: 15px;
-background: #f97316;
-border-radius: 50%;
-}
-
-.timeline-content {
-background: white;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-margin-top:10px;
-text-align:center;
-}
-
-/* DARK MODE */
-.dark-mode {
-background:#0f172a;
-color:white;
-}
-
-.dark-mode .card,
-.dark-mode .timeline-content {
-background:#1e293b;
-}
-
-.dark-mode .hero {
-background:linear-gradient(135deg,#020617,#1e293b);
-}
-
-/* TOGGLE */
-.switch {
-position:fixed;
-right:20px;
-top:20px;
-}
-
-.slider {
-width:50px;
-height:24px;
-background:#ccc;
-display:block;
-border-radius:24px;
-position:relative;
-cursor:pointer;
-}
-
-.slider:before {
-content:"";
-width:18px;
-height:18px;
-background:white;
+content:'';
 position:absolute;
-left:3px;
-top:3px;
-border-radius:50%;
-transition:0.3s;
-}
-
-input:checked + .slider {
+left:50%;
+width:3px;
+height:100%;
 background:#f97316;
 }
 
-input:checked + .slider:before {
-transform:translateX(26px);
+.timeline-item {
+position:relative;
+margin-bottom:40px;
+}
+
+.timeline-dot {
+position:absolute;
+left:calc(50% - 7px);
+width:15px;
+height:15px;
+background:#f97316;
+border-radius:50%;
+}
+
+.timeline-content {
+background:white;
+padding:20px;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* EXPERIENCE HOVER */
+.experience-details {
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+opacity:0;
+}
+
+.timeline-content:hover .experience-details {
+max-height:500px;
+opacity:1;
+margin-top:15px;
+}
+
+/* POPUP */
+.popup {
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+}
+
+.popup-content {
+background:white;
+margin:5% auto;
+padding:20px;
+width:80%;
+}
+
+.close {
+float:right;
+cursor:pointer;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+display:none;
+text-align:center;
+padding:20px;
+background:white;
+border-radius:10px;
+}
+
+.testimonial.active {
+display:block;
+}
+
+/* CONTACT */
+.contact-container {
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+justify-content:center;
+}
+
+.contact-form {
+flex:1;
+min-width:250px;
+}
+
+.contact-info {
+flex:1;
+min-width:250px;
+}
+
+input, textarea {
+width:100%;
+padding:10px;
+margin-bottom:10px;
 }
 
 </style>
@@ -187,23 +166,29 @@ transform:translateX(26px);
 
 <body>
 
-<label class="switch">
-<input type="checkbox" onclick="toggleMode()">
-<span class="slider"></span>
-</label>
-
 <header class="hero">
 <h1>Poonam Patil</h1>
-<p class="hero-sub">
-Technical Professional focused on Workflow Automation, Data Handling & System Efficiency
-</p>
-
-<div class="hero-buttons">
-<a href="#experience">Experience</a>
-<a href="#education">Education</a>
-<a href="#project">Projects</a>
-</div>
+<p>Experienced Localization Engineer | IT | Technical Expert </p>
+<button onclick="openResume()">View Resume</button>
 </header>
+
+<!-- COUNTERS -->
+<div class="counter-box">
+<div>
+<h2 class="counter" data-target="4">0</h2>
+<p>Years Experience</p>
+</div>
+
+<div>
+<h2 class="counter" data-target="20">0</h2>
+<p>Projects Supported</p>
+</div>
+
+<div>
+<h2 class="counter" data-target="9">0</h2>
+<p>CGPA</p>
+</div>
+</div>
 
 <section id="experience">
 <h2>Experience</h2>
@@ -212,34 +197,26 @@ Technical Professional focused on Workflow Automation, Data Handling & System Ef
 
 <div class="timeline-item">
 <div class="timeline-dot"></div>
+
 <div class="timeline-content">
 <h3>Localization Engineer</h3>
-<p><b>Andovar</b></p>
-<p>2022 – 2025</p>
-<p>Worked on API integrations, Python automation & QA workflows.</p>
+<p>Andovar</p>
+
+<div class="experience-details">
+<p>Mumbai (2022–2025)</p>
+<ul>
+<li>API workflows</li>
+<li>Machine translation</li>
+<li>Automation scripts</li>
+<li>Testing</li>
+<li>Mentored interns</li>
+</ul>
 </div>
-</div>
 
-</div>
-</section>
-
-<section id="education">
-<h2>Education</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<h3>BSc Computer Science</h3>
-<p>Mumbai University</p>
-<p>CGPA: 9.19</p>
-<p>2018 – 2021</p>
 </div>
 </div>
 
 </div>
-
 </section>
 
 <section id="skills">
@@ -248,8 +225,8 @@ Technical Professional focused on Workflow Automation, Data Handling & System Ef
 <div class="card-grid">
 
 <div class="card">
-<h3>Languages</h3>
-<p>Python, SQL, HTML, CSS</p>
+<h3>Technical</h3>
+<p>Python, Java, C++, SQL, HTML, CSS</p>
 </div>
 
 <div class="card">
@@ -258,43 +235,136 @@ Technical Professional focused on Workflow Automation, Data Handling & System Ef
 </div>
 
 <div class="card">
-<h3>Focus</h3>
-<p>Automation, Testing, APIs</p>
+<h3>Strengths</h3>
+<p>Project Management, Mentorship</p>
+</div>
+
+</div>
+</section>
+
+<section id="languages">
+<h2>Languages</h2>
+
+<div class="card-grid">
+<div class="card">English</div>
+<div class="card">मराठी</div>
+<div class="card">हिन्दी</div>
+</div>
+
+</section>
+
+<section id="certifications">
+<h2>Certifications</h2>
+
+<div class="card-grid">
+
+<div class="card">
+AI for Everyone – Coursera
+</div>
+
+<div class="card">
+Power BI Analyst – Coursera
+</div>
+
+<div class="card">
+Machine Learning A-Z – Udemy
+</div>
+
+<div class="card">
+API Testing – Udemy
 </div>
 
 </div>
 
 </section>
 
-<section id="project">
-<h2>Projects</h2>
+<section id="testimonials">
+<h2>Testimonials</h2>
 
-<div class="card-grid">
-
-<div class="card">
-<h3>Virtual Desktop Assistant</h3>
-<p>Python-based voice assistant</p>
-
-<div class="project-overlay">
-<p>Built using Python & QT for productivity & automation tasks.</p>
+<div class="testimonial active">
+<p>"Great workflow automation skills."</p>
 </div>
 
-</div>
-
+<div class="testimonial">
+<p>"Improved team productivity significantly."</p>
 </div>
 
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
-<p>Email: your-email@gmail.com</p>
-<p>LinkedIn: linkedin.com/in/poonam-patil-16000700pdp</p>
+
+<div class="contact-container">
+
+<div class="contact-form">
+
+<form action="https://formspree.io/f/mwkgyqbp" method="POST">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message" required></textarea>
+<button type="submit">Send</button>
+</form>
+
+</div>
+
+<div class="contact-info">
+
+<p><b>Address:</b> Mumbai, India</p>
+<p><b>Phone:</b> +91-9987392661</p>
+<p><b>Email:</b> Poomampatil1600@gmail.com</p>
+
+</div>
+
+</div>
+
 </section>
 
+<!-- RESUME POPUP -->
+<div id="resumePopup" class="popup">
+<div class="popup-content">
+<span onclick="closeResume()" class="close">&times;</span>
+<iframe src="Poonampatil16.pdf" width="100%" height="500px"></iframe>
+</div>
+</div>
+
 <script>
-function toggleMode(){
-document.body.classList.toggle("dark-mode");
+
+// RESUME POPUP
+function openResume(){
+document.getElementById("resumePopup").style.display="block";
 }
+function closeResume(){
+document.getElementById("resumePopup").style.display="none";
+}
+
+// COUNTER
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+const update=()=>{
+const target=+counter.getAttribute('data-target');
+const count=+counter.innerText;
+const inc=target/200;
+if(count<target){
+counter.innerText=Math.ceil(count+inc);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+};
+update();
+});
+
+// TESTIMONIAL ROTATE
+let index=0;
+const testi=document.querySelectorAll(".testimonial");
+
+setInterval(()=>{
+testi.forEach(t=>t.classList.remove("active"));
+index++;
+if(index>=testi.length) index=0;
+testi[index].classList.add("active");
+},3000);
+
 </script>
 
 </body>
