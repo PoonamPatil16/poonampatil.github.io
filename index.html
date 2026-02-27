@@ -8,56 +8,151 @@
 
 <style>
 
+html {
+scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f5f7fa;
-  color: #333;
-  transition: 0.3s;
+font-family: Arial, sans-serif;
+margin: 0;
+background: #f8fafc;
+color: #1e293b;
+transition: 0.3s;
 }
 
 header {
-  background: linear-gradient(to right, #1e293b, #334155);
-  color:white;
-  padding:60px 0;
-  text-align:center;
+background: linear-gradient(to right, #1e293b, #334155);
+color:white;
+padding:60px 0;
+text-align:center;
+animation: fadeIn 1s ease-in;
 }
 
 section {
-  background: white;
-  margin: 20px;
-  padding: 25px;
-  border-radius: 10px;
-  transition: 0.3s;
+background: white;
+margin: 20px;
+padding: 25px;
+border-radius: 10px;
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
 }
 
-button {
-  padding:10px 20px;
-  border:none;
-  border-radius:30px;
-  background:#f97316;
-  color:white;
-  cursor:pointer;
+section.show {
+opacity:1;
+transform:translateY(0);
 }
 
-.dark-mode {
-  background:#111;
-  color:white;
-}
-.dark-mode section {
-  background:#1e293b;
-  color:white;
-}
-.dark-mode header {
-  background:#000;
+section:hover {
+transform: translateY(-5px);
+box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
 }
 
 .card {
-  background:#e2e8f0;
-  padding:20px;
-  border-radius:10px;
-  min-width:200px;
-  text-align:center;
+background:#e2e8f0;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.card:hover {
+background:#cbd5f5;
+transform: scale(1.05);
+}
+
+button {
+padding:10px 20px;
+border:none;
+border-radius:30px;
+background:#f97316;
+color:white;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+}
+
+button:hover {
+background:#fb923c;
+transform:scale(1.05);
+}
+
+i:hover {
+color:#f97316;
+transform: scale(1.2);
+transition:0.3s;
+}
+
+.dark-mode {
+background:#0f172a;
+color:#f1f5f9;
+}
+
+.dark-mode section {
+background:#1e293b;
+color:#f8fafc;
+}
+
+.dark-mode header {
+background: linear-gradient(to right, #020617, #1e293b);
+}
+
+.switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+
+.switch input { display:none; }
+
+.slider {
+position: absolute;
+cursor: pointer;
+background-color: #ccc;
+border-radius: 24px;
+top: 0; left: 0; right: 0; bottom: 0;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background: white;
+border-radius: 50%;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: #f97316;
+}
+
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+
+/* Ripple */
+.ripple {
+position:absolute;
+border-radius:50%;
+transform:scale(0);
+background:rgba(255,255,255,0.6);
+animation:ripple 0.6s linear;
+}
+
+@keyframes ripple {
+to {
+transform:scale(4);
+opacity:0;
+}
+}
+
+@keyframes fadeIn {
+from {opacity:0}
+to {opacity:1}
 }
 
 </style>
@@ -65,104 +160,103 @@ button {
 
 <body>
 
+<!-- Sidebar -->
+<div id="sidebar" style="position:fixed; left:-250px; top:0; width:250px; height:100%; background:#111; color:white; padding:20px; transition:0.3s; z-index:1000;">
+<h3>Menu</h3>
+<p><a href="#summary" style="color:white;">About</a></p>
+<p><a href="#tools" style="color:white;">Software</a></p>
+<p><a href="#experience" style="color:white;">Experience</a></p>
+<p><a href="#education" style="color:white;">Education</a></p>
+<p><a href="#project" style="color:white;">Project</a></p>
+<p><a href="#contact" style="color:white;">Contact</a></p>
+</div>
+
+<button onclick="toggleSidebar()" style="position:fixed; left:20px; top:20px;">☰</button>
+
+<div style="position:fixed; right:20px; top:20px;">
+<label class="switch">
+<input type="checkbox" onclick="toggleMode()">
+<span class="slider"></span>
+</label>
+</div>
+
 <header>
 <h1>Poonam Patil</h1>
 <p>Technical Professional | Data Workflows | Process Optimization</p>
 <p>4 Years Experience | Mumbai, India</p>
 </header>
 
-<div style="text-align:right; padding:10px 20px;">
-<button onclick="toggleMode()">🌙 / ☀️</button>
-</div>
-
-<section>
+<section id="summary">
 <h2>Summary</h2>
-<p>Experienced professional with 4 years of expertise managing workflows and improving efficiency using Python, APIs and automation.</p>
+<p>Experienced professional skilled in workflows, automation, API integration and operational efficiency.</p>
 </section>
 
-<section>
-<h2>Highlights</h2>
-<div style="display:flex; flex-wrap:wrap; gap:20px;">
-<div class="card"><h3>4+</h3><p>Years Experience</p></div>
-<div class="card"><h3>9.19</h3><p>CGPA</p></div>
-<div class="card"><h3>AWS</h3><p>Cloud Exposure</p></div>
-<div class="card"><h3>Python</h3><p>Automation</p></div>
-</div>
-</section>
-
-<section>
+<section id="tools">
 <h2>Software & Tools</h2>
-<div style="display:flex; flex-wrap:wrap; text-align:center;">
-<div style="flex:1; padding:20px;">
-<i class="fa-solid fa-tags fa-2x"></i>
-<p>Automation Tools</p>
-</div>
-<div style="flex:1; padding:20px;">
-<i class="fa-solid fa-print fa-2x"></i>
-<p>Data Processing</p>
-</div>
-<div style="flex:1; padding:20px;">
-<i class="fa-solid fa-filter fa-2x"></i>
-<p>API Integration</p>
-</div>
-<div style="flex:1; padding:20px;">
 <i class="fa-solid fa-code fa-2x"></i>
-<p>Python Coding</p>
-</div>
-<div style="flex:1; padding:20px;">
+<i class="fa-solid fa-filter fa-2x"></i>
 <i class="fa-solid fa-folder fa-2x"></i>
-<p>File Handling</p>
-</div>
-<div style="flex:1; padding:20px;">
-<i class="fa-solid fa-pen-to-square fa-2x"></i>
-<p>Text Processing</p>
-</div>
-</div>
+<i class="fa-solid fa-tags fa-2x"></i>
 </section>
 
-<section>
+<section id="experience">
 <h2>Experience</h2>
-<h3>Andovar</h3>
-<p>Localization Engineer (2022–2025)</p>
-<ul>
-<li>API workflows</li>
-<li>Python automation</li>
-<li>Testing & QA</li>
-<li>Mentored interns</li>
-</ul>
+<p>Andovar – 2022 to 2025</p>
 </section>
 
-<section>
+<section id="education">
 <h2>Education</h2>
-<p>BSc Computer Science</p>
-<p>Mumbai University</p>
-<p>CGPA: 9.19</p>
+<p>BSc Computer Science | CGPA: 9.19</p>
 </section>
 
-<section>
+<section id="project">
 <h2>Project</h2>
-<h3>Virtual Desktop Assistant</h3>
-<p>Voice-based assistant built using Python.</p>
+<p>Virtual Desktop Assistant</p>
 </section>
 
-<section>
-<h2>Resume</h2>
-<a href="Poonam_Patil_Resume.pdf" target="_blank">
-<button>Download Resume</button>
-</a>
-</section>
-
-<section>
+<section id="contact">
 <h2>Contact</h2>
-<p><i class="fa-solid fa-location-dot"></i> Mumbai, India</p>
-<p><i class="fa-solid fa-envelope"></i> your-email@gmail.com</p>
-<p><i class="fa-brands fa-linkedin"></i> linkedin.com/in/poonam-patil-16000700pdp</p>
+<p><i class="fa-solid fa-envelope"></i> Poonampatil1600@gmail.com</p>
 </section>
 
 <script>
-function toggleMode() {
+
+// sidebar
+function toggleSidebar(){
+let s = document.getElementById("sidebar");
+s.style.left = s.style.left === "0px" ? "-250px" : "0px";
+}
+
+// dark mode
+function toggleMode(){
 document.body.classList.toggle("dark-mode");
 }
+
+// ripple
+document.querySelectorAll("button").forEach(button=>{
+button.addEventListener("click",function(e){
+const circle=document.createElement("span");
+circle.classList.add("ripple");
+const rect=this.getBoundingClientRect();
+circle.style.width=circle.style.height=Math.max(rect.width,rect.height)+"px";
+circle.style.left=e.clientX-rect.left-rect.width/2+"px";
+circle.style.top=e.clientY-rect.top-rect.height/2+"px";
+this.appendChild(circle);
+setTimeout(()=>circle.remove(),600);
+});
+});
+
+// scroll animation
+window.addEventListener("scroll",()=>{
+document.querySelectorAll("section").forEach(sec=>{
+let pos=sec.getBoundingClientRect().top;
+let screen=window.innerHeight;
+if(pos<screen-100){
+sec.classList.add("show");
+}
+});
+});
+
 </script>
 
 </body>
