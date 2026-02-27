@@ -141,6 +141,34 @@ padding:20px;
 width:80%;
 }
 
+/* FLOATING CONTACT */
+.floating-contact {
+position:fixed;
+bottom:30px;
+right:30px;
+background:#f97316;
+color:white;
+font-size:24px;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
+z-index:1700;
+box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+.floating-contact:hover {
+transform:scale(1.1);
+}
+
+/* TYPING */
+#typing::after {
+content:"|";
+animation:blink 1s infinite;
+}
+@keyframes blink {
+0%,100% {opacity:1;}
+50% {opacity:0;}
+}  
+
 </style>
 </head>
 
@@ -166,7 +194,7 @@ width:80%;
 <!-- HERO -->
 <div class="hero">
 <h1>Poonam Patil</h1>
-<p>Experienced Localization Engineer | IT | Technical Expert</p>
+<p id="typing"></p>
 
 <button onclick="openResume()">View Resume</button>
 <a href="Poonam_Patil_Resume.pdf" download>
@@ -299,8 +327,20 @@ Virtual Desktop Assistant – Python-based voice assistant for daily productivit
 <iframe src="Poonampatil16.pdf" width="100%" height="500px"></iframe>
 </div>
 </div>
-
+<a href="#contact" class="floating-contact">📩</a>
 <script>
+
+// Typing
+const text = "Experienced Localization Engineer | IT | Technical Expert";
+let i = 0;
+function typeEffect(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeEffect,50);
+}
+}
+window.onload = typeEffect;  
 
 // DARK MODE
 function toggleMode(){
