@@ -26,8 +26,8 @@ line-height:1.8;
 
 /* LIGHT MODE */
 .light-mode {
-background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-color:#1f2937;
+background: linear-gradient(135deg, #fafbfc 0%, #f3f4f8 100%);
+color:#0d1117;
 }
 
 .light-mode .hero {
@@ -45,17 +45,17 @@ color: rgba(255, 255, 255, 0.95);
 }
 
 .light-mode .card {
-background: white;
-color:#1f2937;
+background: #ffffff;
+color:#0d1117;
 border:none;
 border-radius: 16px;
-box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+box-shadow: 0 10px 30px rgba(102, 126, 234, 0.12);
 }
 
 .light-mode .card:hover {
 transform: translateY(-8px);
 box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
 }
 
 .light-mode .card::before {
@@ -71,28 +71,28 @@ border-radius: 16px 16px 0 0;
 
 .light-mode input,
 .light-mode textarea {
-background: white;
-color:#1f2937;
+background: #ffffff;
+color:#0d1117;
 border: 2px solid #e5e7eb;
+}
+
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+color:#6b7280;
 }
 
 .light-mode input:focus,
 .light-mode textarea:focus {
 border-color:#667eea;
-background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
-}
-
-.light-mode input::placeholder,
-.light-mode textarea::placeholder {
-color:#9ca3af;
+background: #f9fafb;
+box-shadow: 0 0 12px rgba(102, 126, 234, 0.25);
 }
 
 .light-mode .contact-info {
-background: white;
+background: #ffffff;
 border: 2px solid #e5e7eb;
-color:#1f2937;
-box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+color:#0d1117;
+box-shadow: 0 10px 30px rgba(102, 126, 234, 0.12);
 border-radius: 16px;
 }
 
@@ -108,14 +108,18 @@ border-radius: 16px 16px 0 0;
 }
 
 .light-mode .contact-info b {
-color:#667eea;
-font-weight: 600;
+color:#1f2937;
+font-weight: 700;
+}
+
+.light-mode .contact-info p {
+color: #0d1117;
 }
 
 .light-mode form {
-background: white;
+background: #ffffff;
 border: 2px solid #e5e7eb;
-box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+box-shadow: 0 10px 30px rgba(102, 126, 234, 0.12);
 border-radius: 16px;
 }
 
@@ -136,6 +140,10 @@ color: #667eea;
 
 .light-mode section {
 opacity:1;
+}
+
+.light-mode section p {
+color: #1f2937;
 }
 
 .light-mode .btn {
@@ -165,11 +173,11 @@ box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
 }
 
 .light-mode .popup-content {
-background: white;
+background: #ffffff;
 border: 3px solid #667eea;
-color:#1f2937;
+color:#0d1117;
 border-radius: 20px;
-box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
 
 .light-mode #scrollBar {
@@ -178,6 +186,74 @@ background: linear-gradient(90deg, #667eea, #764ba2);
 
 .light-mode .section-badge {
 background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.light-mode .skill-category {
+background: #ffffff;
+color: #0d1117;
+border-left: 4px solid #667eea;
+box-shadow: 0 8px 20px rgba(102, 126, 234, 0.12);
+}
+
+.light-mode .skill-category:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 28px rgba(102, 126, 234, 0.2);
+}
+
+.light-mode .skill-category strong {
+color: #667eea;
+}
+
+.light-mode .skill-category p {
+color: #1f2937;
+}
+
+.light-mode .project-card {
+background: #ffffff;
+box-shadow: 0 10px 30px rgba(102, 126, 234, 0.12);
+}
+
+.light-mode .project-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 5px;
+background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.light-mode .project-card:hover {
+transform:translateY(-10px);
+box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+}
+
+.light-mode .project-title {
+color: #0d1117;
+}
+
+.light-mode .project-desc {
+color: #374151;
+}
+
+.light-mode .project-overlay {
+background: rgba(102, 126, 234, 0.08);
+border-top: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.light-mode .sidebar {
+background: linear-gradient(180deg, #f9fafb 0%, #f3f4f8 100%);
+border-right: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.light-mode .sidebar a {
+color: #374151;
+}
+
+.light-mode .sidebar a:hover,
+.light-mode .sidebar a.active {
+color: #667eea;
+background: rgba(102, 126, 234, 0.08);
 }
 
 /* HERO */
@@ -334,7 +410,7 @@ margin: 12px 0;
 }
 
 .light-mode section p {
-color: #4b5563;
+color: #1f2937;
 }
 
 /* SECTION HEADER */
@@ -406,7 +482,7 @@ font-weight: 500;
 /* PROJECT SECTION */
 .projects-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 gap: 30px;
 margin-top: 30px;
 }
@@ -446,19 +522,26 @@ font-size: 20px;
 font-weight: 700;
 color: white;
 margin: 0;
-margin-bottom: 15px;
+margin-bottom: 12px;
 }
 
 .project-desc {
 font-size: 14px;
-color: rgba(226, 232, 240, 0.7);
-margin: 10px 0;
+color: rgba(226, 232, 240, 0.8);
+margin: 0;
+line-height: 1.6;
 }
 
 .project-overlay {
 padding:15px 28px 28px 28px;
 background: rgba(102, 126, 234, 0.1);
 border-top: 1px solid rgba(102, 126, 234, 0.2);
+display: flex;
+gap: 10px;
+}
+
+.project-overlay a {
+text-decoration: none;
 }
 
 /* SKILLS GRID */
@@ -475,11 +558,25 @@ padding:20px;
 border-radius:12px;
 border-left: 4px solid #667eea;
 box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
+position: relative;
 }
 
 .skill-category:hover {
 transform: translateY(-5px);
 box-shadow: 0 12px 28px rgba(102, 126, 234, 0.2);
+}
+
+.skill-category strong {
+color: #667eea;
+display: block;
+margin-bottom: 10px;
+font-size: 15px;
+}
+
+.skill-category p {
+margin: 0;
+font-size: 14px;
+color: rgba(226, 232, 240, 0.8);
 }
 
 /* BUTTON */
@@ -494,6 +591,11 @@ font-weight:600;
 transition: all 0.3s;
 box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
 font-size: 15px;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
 }
 
 .btn:hover {
@@ -640,6 +742,7 @@ font-size:16px;
 display: flex;
 align-items: center;
 gap: 10px;
+color: rgba(226, 232, 240, 0.9);
 }
 
 .contact-info b {
@@ -1014,7 +1117,7 @@ through technology.
 <h3 class="project-title">🎤 Virtual Desktop Assistant</h3>
 <p class="project-desc">Python Voice Assistant with advanced speech recognition and automation capabilities for desktop control.</p>
 <div class="project-overlay">
-<button class="btn" style="width: 100%;">View Details</button>
+<button class="btn" style="width: 100%;">📖 View Details</button>
 </div>
 </div>
 </div>
@@ -1023,8 +1126,15 @@ through technology.
 <div class="project-content">
 <h3 class="project-title">💬 AI Chatbox on Android</h3>
 <p class="project-desc">Intelligent mobile chat application with natural language processing and real-time conversation features.</p>
+</div>
+</div>
+
+<div class="project-card">
+<div class="project-content">
+<h3 class="project-title">🌐 AI Localization QA Assistant</h3>
+<p class="project-desc">AI-assisted tool that automatically analyzes bilingual datasets to detect missing translations and terminology mismatches with exportable QA reports.</p>
 <div class="project-overlay">
-<button class="btn" style="width: 100%;">View Details</button>
+<a href="https://github.com/PoonamPatil16/AI-Localization-QA-Assistant/tree/main" target="_blank" class="btn" style="width: 100%; text-decoration: none;">🔗 GitHub Repo</a>
 </div>
 </div>
 </div>
