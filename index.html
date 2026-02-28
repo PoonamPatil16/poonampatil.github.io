@@ -24,8 +24,18 @@ color:#020617;
 }
 .dark-mode .hero { background:#e2e8f0; color:#020617; }
 .dark-mode .card { background:#ffffff; color:#020617; }
+.dark-mode input,
+.dark-mode textarea {
+background:#ffffff;
+color:#020617;
+border:1px solid #cbd5e1;
+}
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+color:#64748b;
+}
 
- .light-mode {
+.light-mode {
 background:#f8fafc;
 color:#020617;
 }
@@ -44,9 +54,13 @@ color:#020617;
 background:white;
 color:#020617;
 border:1px solid #ccc;
-} 
+}
 
-  
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+color:#94a3b8;
+}
+
 /* HERO */
 .hero {
 padding:100px 40px;
@@ -92,10 +106,6 @@ color:#f97316;
 font-weight:bold;
 }
 
-<div class="theme-toggle">
-<button onclick="toggleTheme()" class="btn">🌙 / ☀️</button>
-</div>
-  
 .menu-btn {
 position:fixed;
 left:20px;
@@ -104,6 +114,10 @@ background:#f97316;
 padding:10px;
 cursor:pointer;
 z-index:1600;
+border:none;
+border-radius:4px;
+color:white;
+font-size:18px;
 }
 
 /* SECTIONS */
@@ -186,6 +200,10 @@ padding:15px;
 border-radius:50%;
 text-decoration:none;
 z-index:1700;
+transition:0.3s;
+}
+.floating-contact:hover {
+transform:scale(1.1);
 }
 
 /* TYPING */
@@ -206,7 +224,142 @@ right:20px;
 z-index:2000;
 }
 
-  
+/* CONTACT SECTION LAYOUT */
+.contact-container {
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+form {
+display:flex;
+flex-direction:column;
+gap:15px;
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+border-left:3px solid #f97316;
+}
+
+input,
+textarea {
+padding:12px 15px;
+border:1px solid #475569;
+border-radius:8px;
+background:#0f172a;
+color:#e2e8f0;
+font-family:Arial, sans-serif;
+font-size:14px;
+transition:0.3s;
+}
+
+input:focus,
+textarea:focus {
+outline:none;
+border-color:#f97316;
+background:#1e293b;
+box-shadow:0 0 8px rgba(249, 115, 22, 0.3);
+}
+
+textarea {
+resize:vertical;
+min-height:120px;
+}
+
+form .btn {
+align-self:flex-start;
+}
+
+.contact-info {
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+border-left:3px solid #f97316;
+}
+
+.contact-info p {
+margin:12px 0;
+font-size:16px;
+}
+
+.contact-info b {
+color:#f97316;
+}
+
+/* POPUP STYLES */
+.popup {
+display:none;
+position:fixed;
+z-index:2001;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.7);
+}
+
+.popup-content {
+background:white;
+margin:5% auto;
+padding:20px;
+border-radius:12px;
+width:90%;
+max-width:800px;
+position:relative;
+}
+
+.popup-content button {
+position:absolute;
+top:10px;
+right:10px;
+background:#f97316;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.popup-content button:hover {
+background:#ea580c;
+}
+
+.popup-content iframe {
+border:none;
+border-radius:8px;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+.hero {
+padding:60px 20px;
+}
+
+section {
+padding:50px 15px;
+}
+
+.contact-container {
+flex-direction:column;
+}
+
+form,
+.contact-info {
+padding:20px;
+}
+
+.menu-btn {
+padding:8px;
+font-size:16px;
+}
+
+input,
+textarea {
+font-size:16px;
+}
+}
+
 </style>
 </head>
 
@@ -223,7 +376,7 @@ z-index:2000;
 <a href="#contact">Contact</a>
 </div>
 
-<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
 
 <div class="theme-toggle">
 <button onclick="toggleTheme()" class="btn">🌙 / ☀️</button>
@@ -240,7 +393,7 @@ z-index:2000;
 </a>
 </div>
 
-<!-- ABOUT (UNCHANGED) -->
+<!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 
@@ -283,7 +436,7 @@ through technology.
 <h2>Experience</h2>
 <div class="card">Localization Engineer – Andovar</div>
 <div class="card">4+ Years</div>
-<div class="card">File Preparation,Tool Management,Automation and Workflow Optimization</div>
+<div class="card">File Preparation, Tool Management, Automation and Workflow Optimization</div>
 </section>
 
 <!-- SKILLS -->
@@ -318,7 +471,7 @@ through technology.
 
 </section>  
   
-<!-- PROJECT -->
+<!-- PROJECTS -->
 <section id="projects">
 <h2>Projects</h2>
 <div class="card">
@@ -349,7 +502,7 @@ Python Voice Assistant
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <textarea name="message" placeholder="Message" required></textarea>
-<button type="submit">Send</button>
+<button type="submit" class="btn">Send</button>
 </form>
   
 <div class="contact-info">
@@ -389,10 +542,24 @@ setTimeout(typeEffect,50);
 }
 window.onload = typeEffect;
 
-// Dark Mode
-function toggleMode(){
-document.body.classList.toggle("dark-mode");
+// Theme Toggle
+function toggleTheme(){
+document.body.classList.toggle("light-mode");
+
+// Save theme
+if(document.body.classList.contains("light-mode")){
+localStorage.setItem("theme","light");
+}else{
+localStorage.setItem("theme","dark");
 }
+}
+
+// Load saved theme
+document.addEventListener("DOMContentLoaded", function() {
+if(localStorage.getItem("theme") === "light"){
+document.body.classList.add("light-mode");
+}
+});
 
 // Sidebar
 function toggleSidebar(){
@@ -415,7 +582,7 @@ let height = document.documentElement.scrollHeight - document.documentElement.cl
 document.getElementById("scrollBar").style.width = (scrollTop / height) * 100 + "%";
 };
 
-// Fade
+// Fade in sections on scroll
 window.addEventListener("scroll",()=>{
 document.querySelectorAll("section").forEach(sec=>{
 let pos = sec.getBoundingClientRect().top;
@@ -424,26 +591,6 @@ sec.classList.add("show");
 }
 });
 });
-
-
-function toggleTheme(){
-document.body.classList.toggle("light-mode");
-
-// Save theme
-if(document.body.classList.contains("light-mode")){
-localStorage.setItem("theme","light");
-}else{
-localStorage.setItem("theme","dark");
-}
-}
-
-// Load saved theme
-document.addEventListener("DOMContentLoaded", function() {
-if(localStorage.getItem("theme") === "light"){
-document.body.classList.add("light-mode");
-}
-});
-  
   
 </script>
 
