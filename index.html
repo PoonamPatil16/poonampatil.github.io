@@ -25,6 +25,28 @@ color:#020617;
 .dark-mode .hero { background:#e2e8f0; color:#020617; }
 .dark-mode .card { background:#ffffff; color:#020617; }
 
+ .light-mode {
+background:#f8fafc;
+color:#020617;
+}
+
+.light-mode .hero {
+background:#e2e8f0;
+}
+
+.light-mode .card {
+background:white;
+color:#020617;
+}
+
+.light-mode input,
+.light-mode textarea {
+background:white;
+color:#020617;
+border:1px solid #ccc;
+} 
+
+  
 /* HERO */
 .hero {
 padding:100px 40px;
@@ -70,6 +92,10 @@ color:#f97316;
 font-weight:bold;
 }
 
+<div class="theme-toggle">
+<button onclick="toggleTheme()" class="btn">🌙 / ☀️</button>
+</div>
+  
 .menu-btn {
 position:fixed;
 left:20px;
@@ -172,6 +198,15 @@ animation:blink 1s infinite;
 50% {opacity:0;}
 }
 
+/* THEME TOGGLE POSITION */
+.theme-toggle {
+position:fixed;
+top:20px;
+right:20px;
+z-index:2000;
+}
+
+  
 </style>
 </head>
 
@@ -190,8 +225,8 @@ animation:blink 1s infinite;
 
 <div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
-<div class="toggle">
-<button onclick="toggleMode()">🌙</button>
+<div class="theme-toggle">
+<button onclick="toggleTheme()" class="btn">🌙 / ☀️</button>
 </div>
 
 <!-- HERO -->
@@ -390,6 +425,26 @@ sec.classList.add("show");
 });
 });
 
+
+function toggleTheme(){
+document.body.classList.toggle("light-mode");
+
+// Save theme
+if(document.body.classList.contains("light-mode")){
+localStorage.setItem("theme","light");
+}else{
+localStorage.setItem("theme","dark");
+}
+}
+
+// Load saved theme
+document.addEventListener("DOMContentLoaded", function() {
+if(localStorage.getItem("theme") === "light"){
+document.body.classList.add("light-mode");
+}
+});
+  
+  
 </script>
 
 </body>
