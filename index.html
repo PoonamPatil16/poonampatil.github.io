@@ -910,6 +910,73 @@ align-items: flex-start;
 }
 }
 
+/* ===== CONTACT ALIGNMENT FIX ===== */
+
+.contact-wrapper {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.contact-box {
+  flex: 1;
+  max-width: 500px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(102,126,234,0.2);
+  background: rgba(0,0,0,0.2);
+  color: white;
+}
+
+#contact-form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg,#667eea,#764ba2);
+  color: white;
+  cursor: pointer;
+}
+
+.contact-info {
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(102,126,234,0.2);
+  background: rgba(255,255,255,0.02);
+}
+
+.connect-note {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(102,126,234,0.2);
+}
+
+#form-status {
+  display: none;
+  margin-top: 15px;
+  color: #667eea;
+}
+
+@media(max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}   
+
+  
 </style>
 </head>
 
@@ -1163,20 +1230,21 @@ through technology.
 </section>
 
 <section id="contact">
+
   <div class="section-header">
     <h2>Contact</h2>
     <span class="section-badge">Get in Touch</span>
   </div>
 
-  <div class="contact-container">
+  <div class="contact-wrapper">
 
-    <!-- LEFT : FORM -->
-    <div class="contact-form-box">
+    <!-- LEFT -->
+    <div class="contact-box">
       <form id="contact-form">
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="email" id="email" placeholder="Your Email" required>
         <textarea id="message"
-        placeholder="Message (in some browsers this form may not work — email is recommended)"
+        placeholder="Message (some browsers may not support form submission)"
         required></textarea>
 
         <button type="submit">Send</button>
@@ -1185,13 +1253,13 @@ through technology.
       <p id="form-status"></p>
     </div>
 
-    <!-- RIGHT : CONTACT INFO -->
-    <div class="contact-info">
+    <!-- RIGHT -->
+    <div class="contact-box contact-info">
       <p><b>📍 Address:</b> Mumbai, India</p>
       <p><b>📞 Phone:</b> +91-9987392661</p>
       <p><b>✉️ Email:</b> Poonampatil1600@gmail.com</p>
       <p><b>📧 LinkedIn:</b> www.linkedin.com/in/poonam-patil-16000700pdp</p>
-      <p><b>💻 GitHub:</b> PoonamPatil16</p>
+      <p><b>💻 GitHub:</b> PoonamPatil16.github</p>
 
       <p class="connect-note">
         <strong>💡 Let's Connect!</strong><br>
@@ -1200,6 +1268,7 @@ through technology.
     </div>
 
   </div>
+
 </section>
 
 </div>
@@ -1292,7 +1361,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
     const status = document.getElementById("form-status");
 
-    if (!form) return; // prevents error if form not found
+    if (!form) return;
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -1301,6 +1370,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("email").value;
         const message = document.getElementById("message").value;
 
+        // ✅ Show status without breaking layout
+        status.style.display = "block";
         status.innerText = "Sending...";
 
         try {
@@ -1317,6 +1388,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (response.ok) {
                 status.innerText = "Message sent successfully!";
                 form.reset();
+
+                // ✅ Hide after 3 sec
+                setTimeout(() => {
+                    status.style.display = "none";
+                }, 3000);
+
             } else {
                 status.innerText = data.error || "Something went wrong.";
             }
@@ -1325,7 +1402,7 @@ document.addEventListener("DOMContentLoaded", function () {
             status.innerText = "Server error. Try again later.";
         }
     });
-});  
+});
   
 </script>
 
